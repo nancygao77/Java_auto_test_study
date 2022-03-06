@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="测试套件" parallel="tests" thread-count="2">
+    <listeners>
+        <listener class-name="com.lemon.listener.TestResultListener"/>
+    </listeners>
+    <!-- 9-17行  线程1，2为两个case同时跑配的testng.xml文件 -->
+    <test name="线程1">
+        <classes>
+            <class name="com.lemon.testcase.LoginTest"/>
+        </classes>
+    </test>
+    <test name="线程2">
+        <classes>
+            <class name="com.lemon.testcase.LoginTest"/>
+        </classes>
+    </test>
+
+
+    <!-- 21-40行  线程1-chrome，线程2-Firefox ，线程3-IE 为三个浏览器同时跑时的配置 -->
+    <test name="线程1-chrome">
+        <parameter name="browserName" value="chrome"></parameter>
+        <classes>
+            <class name="com.lemon.testcase.LoginTest"/>
+        </classes>
+    </test>
+
+    <test name="线程2-Firefox">
+        <parameter name="browserName" value="firefox"></parameter>
+        <classes>
+            <class name="com.lemon.testcase.LoginTest"/>
+        </classes>
+    </test>
+
+    <test name="线程3-IE">
+        <parameter name="browserName" value="ie"></parameter>
+        <classes>
+            <class name="com.lemon.testcase.LoginTest"/>
+        </classes>
+    </test>
+
+</suite>
